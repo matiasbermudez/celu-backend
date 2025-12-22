@@ -1,7 +1,5 @@
 import { DataTypes , Model  } from "sequelize";
 import { sequelizeOn } from "../db/sequelize";
-import { User } from './User.model'
-import { Wishlist } from './Wishlist.model'
 
 export class Product extends Model {}
 

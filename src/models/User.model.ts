@@ -1,7 +1,5 @@
 import { DataTypes, Model  } from "sequelize";   
 import { sequelizeOn } from "../db/sequelize";
-import { Product } from './Product.model'
-import { Wishlist } from './Wishlist.model'
 
 export class User extends Model {}
 
@@ -11,6 +9,10 @@ User.init(
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
+        },
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         email: {
             type: DataTypes.STRING,
