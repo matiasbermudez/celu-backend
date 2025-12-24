@@ -14,6 +14,15 @@ router.post('/registrar', async (req, res) => {
     }
 });
 
+router.post('/login', async (req, res) => {
+    try {
+        await loginUser(req, res);
+    } catch (error) {
+        console.error('Error en la ruta /login:', error);
+        res.status(500).json({ message: 'Error del servidor' });
+    }
+});
+
 
 
 

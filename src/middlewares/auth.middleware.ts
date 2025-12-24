@@ -1,8 +1,13 @@
 import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express';
 
-const authMiddleware = (req: any, res: any, next: any) => {
+export interface AuthRequest extends Request {
+    user?: any; 
+}
 
-    const authHeader = req.headers.autorization
+const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
+
+    const authHeader = req.headers.authorization
 
     //Verifico la existencia del token
     if (!authHeader) {
@@ -25,3 +30,5 @@ const authMiddleware = (req: any, res: any, next: any) => {
     }
 
 }
+
+export default authMiddleware;
