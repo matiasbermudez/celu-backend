@@ -1,6 +1,8 @@
 import express from 'express';
 import registrarUser from './controllers/userController';
 import loginUser from './controllers/loginController';
+import authMiddleware from './middlewares/auth.middleware';
+import rolMiddleware from './middlewares/rol.middleware';
 
 const router = express.Router();
 
@@ -24,6 +26,19 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.get('/testAdmin', authMiddleware, rolMiddleware(['admin']), (req:any, res:any) => {
+    try {
+         res.json({
+    message: 'Bienvenido admin',
+    user: req.user,
+  });
+    }
+    catch (error) {
+        console.error('Error en la ruta /testAdmin:', error);
+        return res.status(500).json({ message: 'Error del servidor' });
+    }
+   
+});
 
 
 

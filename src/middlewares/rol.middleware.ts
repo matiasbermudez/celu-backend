@@ -21,3 +21,5 @@ const rolMiddleware = (rolesPermitidos: string[]) => {
 
 
 }
+
+export default rolMiddleware;
