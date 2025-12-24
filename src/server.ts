@@ -26,13 +26,16 @@ const PORT = process.env.PORT || 4000;
 ; })();
 
 /*{
+    {
     "message": "Usuario registrado exitosamente",
     "user": {
-        "id": "248b237c-0855-474d-8d83-18402ef0a841",
+        "id": "9306a78e-1b3a-402e-8b4f-808f83a47440",
         "role": "user",
         "username": "UserTest",
         "email": "prueba@next.com",
-        "updatedAt": "2025-12-24T02:44:15.101Z",
-        "createdAt": "2025-12-24T02:44:15.101Z"
+        "updatedAt": "2025-12-24T03:15:11.987Z",
+        "createdAt": "2025-12-24T03:15:11.987Z"
+    }
+}
     }
 } */

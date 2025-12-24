@@ -1,7 +1,27 @@
-import { DataTypes, Model  } from "sequelize";   
+import { DataTypes, Model } from "sequelize";
 import { sequelizeOn } from "../db/sequelize";
+export interface UserAttributes {
+    id: number;
+    username: string;
+    email: string;
+    password: string;
+    role: 'admin' | 'user';
+}
 
-export class User extends Model {}
+export interface UserCreationAttributes
+    extends Omit<UserAttributes, 'id' | 'role'> {
+    role?: 'admin' | 'user';
+}
+
+export class User
+    extends Model<UserAttributes, UserCreationAttributes>
+    implements UserAttributes {
+    declare id: number;
+    declare username: string;
+    declare email: string;
+    declare password: string;
+    declare role: 'admin' | 'user';
+}
 
 User.init(
     {
@@ -23,14 +43,14 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        role : {
+        role: {
             type: DataTypes.ENUM('admin', 'user'),
             defaultValue: 'user',
         },
     },
     {
-        sequelize : sequelizeOn,
-          modelName: 'User',
-          tableName: 'users',
+        sequelize: sequelizeOn,
+        modelName: 'User',
+        tableName: 'users',
     }
 )

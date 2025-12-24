@@ -41,7 +41,7 @@ const registrarUser = async (req: RequestUser, res: any) => {
         }
 
         //Hasheao la contraseña
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword:string = await bcrypt.hash(password, 14);
 
         //Creo el usuario
         const nuevoUser = await User.create({
@@ -49,8 +49,7 @@ const registrarUser = async (req: RequestUser, res: any) => {
             email,
             password: hashedPassword,
         });
-        const userSeguro = nuevoUser.toJSON();
-        delete userSeguro.password;
+        const { password : _password , ...userSeguro } = nuevoUser.toJSON();
         return res.status(201).json({ message: 'Usuario registrado exitosamente', user: userSeguro });
 
     } 
