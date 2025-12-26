@@ -1,7 +1,7 @@
-import { DataTypes , Model  } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { sequelizeOn } from "../db/sequelize";
 
-export class Product extends Model {}
+export class Product extends Model { }
 
 Product.init(
     {
@@ -24,6 +24,22 @@ Product.init(
         },
         stock: {
             type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        brand: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        model: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        state: {
+            type: DataTypes.ENUM('new', 'used', 'refurbished'),
             allowNull: false
         }
     },
