@@ -1,5 +1,5 @@
 import express from 'express';
-import registrarUser from '../controllers/user.controller';
+import registerUser from '../controllers/user.controller';
 import loginUser from '../controllers/login.controller';
 import authMiddleware from '../middlewares/auth.middleware';
 import rolMiddleware from '../middlewares/rol.middleware';
@@ -8,7 +8,7 @@ const userRouter = express.Router();
 
 
 
-userRouter.post('/registrar', registrarUser) ;
+userRouter.post('/register', registerUser) ;
 
 userRouter.post('/login', loginUser) ;
 

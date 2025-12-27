@@ -5,7 +5,7 @@ import { getProducts, createProduct } from '../controllers/product.controller';
 
 const productRouter = express.Router();
 
-productRouter.get('/productos', getProducts);
+productRouter.get('/allproducts', getProducts);
 
-
+productRouter.post('/newproduct', authMiddleware, rolMiddleware(['admin']), createProduct);
 export default productRouter;

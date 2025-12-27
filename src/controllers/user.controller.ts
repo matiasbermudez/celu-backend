@@ -9,7 +9,7 @@ type RequestUser = {
     };
 };
 
-const registrarUser = async (req: RequestUser, res: any) => {
+const registerUser = async (req: RequestUser, res: any) => {
     const { username, email, password } = req.body;
 
     try {
@@ -59,4 +59,4 @@ const registrarUser = async (req: RequestUser, res: any) => {
         return res.status(500).json({ message: 'Error del servidor' });
     }
 }
-export default registrarUser;
+export default registerUser;
