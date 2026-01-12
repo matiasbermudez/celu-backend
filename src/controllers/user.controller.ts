@@ -6,16 +6,18 @@ type RequestUser = {
         username: string;
         email: string;
         password: string;
+        firstName: string;
+        lastName: string;
     };
 };
 
 const registerUser = async (req: RequestUser, res: any) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, firstName, lastName } = req.body;
 
     try {
 
         //Verifico campos obligatorios
-        if (!username || !email || !password) {
+        if (!username || !email || !password || !firstName || !lastName) {
             return res.status(400).json({
                 message: 'Faltan campos obligatorios',
             });
@@ -47,6 +49,8 @@ const registerUser = async (req: RequestUser, res: any) => {
         const nuevoUser = await User.create({
             username,
             email,
+            firstName,
+             lastName,
             password: hashedPassword,
         });
         const { password : _password , ...userSeguro } = nuevoUser.toJSON();
